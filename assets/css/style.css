@@ -106,12 +106,12 @@ html,body{
 }
 @media (min-width: 1024px){}
 nav.navbar.bootsnav.no-background {
-    background-color: #fce3f7;
+    background-color: #1f024f;
     border: none;
 }
 
 nav.navbar.bootsnav {
-    background-color: #a2e7f7;
+    background-color: #f9f9f9;
     border-bottom: transparent;
     box-shadow: 0 3px 15px rgba(0,0,0,.2);
 }
