@@ -13,7 +13,7 @@ font-family: 'Poppins', sans-serif;
 1.  General css (Reset code)
 2.  Header
 3.  Welcome-hero
-4.  About me 
+4.  About me
 5.  Education
 6.  Skill
 7.  Experience
@@ -41,7 +41,7 @@ body{
 	font-family: 'Poppins', sans-serif;
 	font-size:16px;
 	color: #676a81;
-	background: #bbdbef;
+	background: #feffff;
     max-width:1920px;
     margin:0 auto;
 	overflow-x:hidden;
