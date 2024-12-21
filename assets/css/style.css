@@ -106,12 +106,12 @@ html,body{
 }
 @media (min-width: 1024px){}
 nav.navbar.bootsnav.no-background {
-    background-color: #1f024f;
+    background-color: #17013a;
     border: none;
 }
 
 nav.navbar.bootsnav {
-    background-color: #f9f9f9;
+    background-color: #120041;
     border-bottom: transparent;
     box-shadow: 0 3px 15px rgba(0,0,0,.2);
 }
@@ -119,7 +119,7 @@ nav.navbar.bootsnav {
 /*.navbar-brand*/
 .navbar-header a.navbar-brand,.navbar-header a.navbar-brand:hover,.navbar-header a.navbar-brand:focus {
     display: inline-block;
-    color: #d92cf9;
+    color: #18014b;
     font-size: 20px;
     font-weight: 600;
     padding: 33px 0px 57px;
@@ -721,7 +721,7 @@ span.single-timeline-horizontal.spacial-horizontal-line {width: 88px;}
     border: 1px solid #b636ff;
     cursor:pointer;
     box-shadow: 0 5px 20px rgba(0,0,0,.2);
-     -webkit-transition: .5s; 
+    -webkit-transition: .5s; 
     -moz-transition:.5s; 
     -ms-transition:.5s; 
     -o-transition:.5s;
@@ -782,7 +782,7 @@ span.single-timeline-horizontal.spacial-horizontal-line {width: 88px;}
 
 /*hm-foot-icon*/
 .hm-foot-icon {
-   
+
 }
 .hm-foot-icon ul li{float:left;}
 .hm-foot-icon ul li>a {
