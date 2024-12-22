@@ -640,7 +640,7 @@ span.single-timeline-horizontal.spacial-horizontal-line {width: 88px;}
 --------------------------------------*/
 .portfolio-section {
     padding: 60px 0;
-    background-color: #f9f9f9;
+    background-color: #d4e5fa;
 }
 .section-heading {
     margin-bottom: 40px;
@@ -783,28 +783,28 @@ table {
     font-family: Arial, sans-serif;
 }
 table thead {
-    background-color: #edf0f3;
-    color: #139efb;
+    background-color: #04e0f9;
+    color: #16026f;
 }
 table th, table td {
     padding: 15px;
     border: 1px solid #ddd;
 }
 table tr:hover {
-    background-color: #f1f1f1;
+    background-color: #b7e5f9;
 }
 table tbody tr:nth-child(even) {
-    background-color: #f9f9f9;
+    background-color: #b8ebf9;
 }
 table tbody tr:nth-child(odd) {
-    background-color: #fff;
+    background-color: #d0f7c2;
 }
 
 /*-------------------------------------
         11. Contact
 --------------------------------------*/
 .contact {
-    background: #f9fbfd;
+    background: #b4b5b6;
     padding: 50px 0 100px;
 }
 .single-contact-box {padding-top: 100px;}
@@ -815,12 +815,12 @@ table tbody tr:nth-child(odd) {
 .contact-form .form-control {
     padding: 25px;
     font-size: 14px;
-    border: 1px solid #fff;
+    border: 1px solid #151414;
     border-radius: 0px;
     box-shadow: none;
     outline: 0!important;
-    background: #fff;
-    color: #636a82;
+    background: #f8faf9;
+    color: #0b0b0c;
     resize: none;
 }
 
@@ -847,7 +847,7 @@ table tbody tr:nth-child(odd) {
     margin-top:0px;
     outline: 0 !important;
     border:0;
-    color: #fff;
+    color: #f1f2f3;
     border-radius: 0px;
     font-size:14px;
     -webkit-transition: .5s; 
@@ -873,7 +873,7 @@ table tbody tr:nth-child(odd) {
 .contact-add-head p {
     font-size:  16px;
     text-transform: capitalize;
-    color:  #636a82;
+    color:  #313233;
     font-weight:  300;
     margin-top:  6px;
 }
@@ -882,11 +882,11 @@ table tbody tr:nth-child(odd) {
 /*.contact-add-info */
 .contact-add-info { margin: 42px 0 52px;}
 .single-contact-add-info h3 {
-    color:  #636a82;
+    color:  #2a2b2c;
     font-weight:  500;
 }
 .single-contact-add-info p {
-    color:  #999fb3;
+    color:  #393a3b;
     font-size:  16px;
     margin-top:  18px;
 }
