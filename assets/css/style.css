@@ -4,11 +4,6 @@
 * Version       : 1.0
 ==================================== */
 
-/*==================================
-font-family: 'Poppins', sans-serif;
-==================================== */
-
-
 /*=========== TABLE OF CONTENTS ===========
 1.  General css (Reset code)
 2.  Header
@@ -119,7 +114,7 @@ nav.navbar.bootsnav {
 /*.navbar-brand*/
 .navbar-header a.navbar-brand,.navbar-header a.navbar-brand:hover,.navbar-header a.navbar-brand:focus {
     display: inline-block;
-    color: #18014b;
+    color: #e2810b;
     font-size: 20px;
     font-weight: 600;
     padding: 33px 0px 57px;
@@ -148,7 +143,7 @@ nav.navbar.bootsnav ul.nav > li.dropdown span {
     font-size: 8px;
     margin-left: 15px;
 }
-.sticky-wrapper.is-sticky nav.navbar.bootsnav ul.nav > li > a {color:#6a708e;}
+.sticky-wrapper.is-sticky nav.navbar.bootsnav ul.nav > li > a {color:#05f9d8;}
 .sticky-wrapper.is-sticky nav.navbar.bootsnav ul.nav > li > a:hover,.sticky-wrapper.is-sticky nav.navbar.bootsnav ul.nav > li > a:focus,.sticky-wrapper.is-sticky nav.navbar.bootsnav ul.nav > li.active>a{color: #d92cf9;}
 /*.nav li*/
 
@@ -163,7 +158,7 @@ nav.navbar.bootsnav ul.nav > li.dropdown span {
     -webkit-box-shadow: inset 0 0 8px #000;
 }
 .menu-ui-design::-webkit-scrollbar-thumb {
-  background-color: #d92cf9;
+  background-color: #159bfa;
 }
 /*.menu-ui-design*/
 
@@ -173,11 +168,11 @@ nav.navbar.bootsnav ul.nav > li.dropdown span {
 nav.navbar.bootsnav .navbar-toggle {
     position: relative;
     background-color: transparent;
-    border: 1px solid #d92cf9;
+    border: 1px solid #0cc0fc;
     padding: 10px;
     top: 0;
 }
-nav.navbar.bootsnav .navbar-toggle i{color: #d92cf9;}
+nav.navbar.bootsnav .navbar-toggle i{color: #21baf7;}
 /*.navbar-toggle */
 
 
@@ -207,16 +202,16 @@ nav.navbar.bootsnav .navbar-toggle i{color: #d92cf9;}
 
 /*.header-text-area*/
 .header-text h2 {
-    color: #fff;
+    color: #f5f9fa;
     font-size: 54px;
     font-weight: 700;
     text-transform: uppercase;
     line-height: 1.5;
 }
-.header-text h2 span {color: #d92cf9;}
+.header-text h2 span {color: #f5f9fa;}
 .header-text p {
-    color: #fff;
-    font-size: 20px;
+    color: #f2f6f9;
+    font-size: 30px;
     font-weight: 300;
     text-transform: uppercase;
     margin: 30px 0 60px;
@@ -249,7 +244,7 @@ nav.navbar.bootsnav .navbar-toggle i{color: #d92cf9;}
 /*.single-about-txt*/
 .single-about-txt h3 {
     font-size:18px;
-    color: #3c4258;
+    color: #222327;
     text-transform: initial;
     line-height: 1.8;
 }
@@ -329,7 +324,7 @@ nav.navbar.bootsnav .navbar-toggle i{color: #d92cf9;}
 --------------------------------------*/
 
 .education {
-    background:  #a2e7f7;
+    background:  #f2f6f6;
     padding-top:  50px;
 }
 .education-horizontal-timeline {
@@ -342,7 +337,7 @@ nav.navbar.bootsnav .navbar-toggle i{color: #d92cf9;}
 .single-horizontal-timeline .experience-time h3{text-transform: capitalize;}
 .single-horizontal-timeline .experience-time h3 span{text-transform:lowercase;}
 .single-horizontal-timeline .timeline-content h5 {margin: 15px 0;}
-.single-horizontal-timeline p {color: #999fb3;max-width: 335px;}
+.single-horizontal-timeline p {color: #0740fb;max-width: 335px;}
 
 /*.timeline-horizontal-border*/
 .timeline-horizontal-border {
@@ -352,7 +347,7 @@ nav.navbar.bootsnav .navbar-toggle i{color: #d92cf9;}
 }
 .timeline-horizontal-border i {
     font-size:  10px;
-    color: #d92cf9;
+    color: #0cfc18;
     margin-right:  5px;
 }
 span.single-timeline-horizontal {
@@ -379,7 +374,7 @@ span.single-timeline-horizontal.spacial-horizontal-line {width: 88px;}
     font-weight: 600;
     text-transform: uppercase;
     padding-bottom: 50px;
-    border-bottom: 1px solid #e5ebf2;
+    border-bottom: 1px solid #bdc1c5;
 }
 .single-progress-txt {
     display: flex;
@@ -455,7 +450,7 @@ span.single-timeline-horizontal.spacial-horizontal-line {width: 88px;}
 .experience-time h3 {
     font-size: 16px;
     font-weight: 300;
-    color: #a2e7f7;
+    color: #070808;
     margin-top: 14px;
     text-transform: uppercase;
 }
@@ -674,7 +669,7 @@ span.single-timeline-horizontal.spacial-horizontal-line {width: 88px;}
 .clients-area {
     display: flex;
     align-items: center;
-    height: 250px;
+    height: 350px;
 }
 .clients-area .item {padding: 0 25px;}
 
@@ -683,6 +678,36 @@ span.single-timeline-horizontal.spacial-horizontal-line {width: 88px;}
     width: 100%;
     height: auto;
     border-radius:0;
+}
+.services-table {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    margin: 30px auto;
+}
+table {
+    width: 80%;
+    border-collapse: collapse;
+    margin: 0 auto;
+    text-align: left;
+    font-family: Arial, sans-serif;
+}
+table thead {
+    background-color: #edf0f3;
+    color: #139efb;
+}
+table th, table td {
+    padding: 15px;
+    border: 1px solid #ddd;
+}
+table tr:hover {
+    background-color: #f1f1f1;
+}
+table tbody tr:nth-child(even) {
+    background-color: #f9f9f9;
+}
+table tbody tr:nth-child(odd) {
+    background-color: #fff;
 }
 
 /*-------------------------------------
