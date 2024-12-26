@@ -1,5 +1,3 @@
-Certainly! Below is an example of a pom.xml file for a Maven project focused on distribution management. This file includes dependencies and plugins that are commonly used in such projects.
-
 <project xmlns="http://maven.apache.org/POM/4.0.0"
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
@@ -14,8 +12,9 @@ Certainly! Below is an example of a pom.xml file for a Maven project focused on 
     <description>A project for managing distribution</description>
 
     <properties>
-        <maven.compiler.source>11</maven.compiler.source>
-        <maven.compiler.target>11</maven.compiler.target>
+        <java.version>11</java.version>
+        <maven.compiler.source>${java.version}</maven.compiler.source>
+        <maven.compiler.target>${java.version}</maven.compiler.target>
     </properties>
 
     <dependencies>
@@ -76,7 +75,7 @@ Certainly! Below is an example of a pom.xml file for a Maven project focused on 
 
     <distributionManagement>
         <repository>
-            <id>mavaen-releases</id>
+            <id>maven-releases</id>
             <url>http://15.207.116.19:8081/repository/maven-releases/</url>
         </repository>
         <snapshotRepository>
@@ -85,13 +84,3 @@ Certainly! Below is an example of a pom.xml file for a Maven project focused on 
         </snapshotRepository>
     </distributionManagement>
 </project>
-
-
-This pom.xml file includes:
-
-Basic project information and metadata.
-Dependencies for Spring Boot, JPA, H2 database, Lombok, and JUnit.
-Build plugins for Spring Boot and Maven Compiler.
-Distribution management configuration for handling releases and snapshots.
-
-Feel free to customize the dependencies and plugins according to your specific project requirements.
