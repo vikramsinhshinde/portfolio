@@ -5,7 +5,7 @@
 
     <groupId>com.example</groupId>
     <artifactId>distribution-management</artifactId>
-    <version>1.0.0</version>
+    <version>1.0.1-SNAPSHOT</version>  <!-- Updated version -->
     <packaging>jar</packaging>
 
     <name>Distribution Management</name>
@@ -79,14 +79,14 @@
     </build>
 
     <distributionManagement>
-    <repository>
-        <id>maven-releases</id>
-        <url>http://15.207.116.19:8081/repository/maven-releases/</url>
-    </repository>
-    <snapshotRepository>
-        <id>maven-snapshots</id>
-        <url>http://15.207.116.19:8081/repository/maven-snapshots/</url>
-    </snapshotRepository>
-</distributionManagement>
+        <repository>
+            <id>maven-releases</id>
+            <url>http://15.207.116.19:8081/repository/maven-releases/</url>
+        </repository>
+        <snapshotRepository>
+            <id>maven-snapshots</id>
+            <url>http://15.207.116.19:8081/repository/maven-snapshots/</url>
+        </snapshotRepository>
+    </distributionManagement>
 
 </project>
