@@ -84,7 +84,6 @@
         <url>http://15.207.116.19:8081/repository/maven-releases/</url>
     </repository>
     <snapshotRepository>
-             <version>1.0.0-SNAPSHOT</version>
         <id>maven-snapshots</id>
         <url>http://15.207.116.19:8081/repository/maven-snapshots/</url>
     </snapshotRepository>
