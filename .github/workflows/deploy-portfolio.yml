@@ -4,12 +4,13 @@ on:
   push:
     branches:
       - main
-
 env:
   AWS_REGION: ap-south-1
   ECR_REPOSITORY: portfolio
   CLUSTER_NAME: vikram-eks
   KUBE_NAMESPACE: test-app
+  AWS_ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
+
 
 jobs:
   build-and-deploy:
@@ -45,7 +46,12 @@ jobs:
 
       - name: Update Kubernetes Deployment
         run: |
-          aws eks update-kubeconfig --region ${{ env.AWS_REGION }} --name ${{ env.CLUSTER_NAME }}
-          kubectl set image deployment/portfolio portfolio=<ACCOUNT_ID>.dkr.ecr.${{ env.AWS_REGION }}.amazonaws.com/${{ env.ECR_REPOSITORY }}:latest -n ${{ env.KUBE_NAMESPACE }}
-          kubectl rollout status deployment/portfolio -n ${{ env.KUBE_NAMESPACE }}
-
+          docker login --username AWS --password-stdin ${{ env.AWS_ACCOUNT_ID }}.dkr.ecr.${{ env.AWS_REGION }}.amazonaws.com \
+          docker tag portfolio:latest ${{ env.AWS_ACCOUNT_ID }}.dkr.ecr.${{ env.AWS_REGION }}.amazonaws.com/portfolio:latest \
+          docker push ${{ env.AWS_ACCOUNT_ID }}.dkr.ecr.${{ env.AWS_REGION }}.amazonaws.com/portfolio:latest \
+          kubectl set image deployment/portfolio portfolio=${{ env.AWS_ACCOUNT_ID }}.dkr.ecr.${{ env.AWS_REGION }}.amazonaws.com/portfolio:latest -n ${{ env.KUBE_NAMESPACE }}
+          
+      - name: Login to ECR
+        run: |
+          aws ecr get-login-password --region ${{ env.AWS_REGION }} | \
+          docker login --username AWS --password-stdin ${{ env.AWS_ACCOUNT_ID }}.dkr.ecr.${{ env.AWS_REGION }}.amazonaws.com
