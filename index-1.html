@@ -1,0 +1,237 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Deploying a Sample Application on AWS EKS</title>
+    <style>
+        body { font-family: Arial, sans-serif; line-height: 1.6; margin: 20px; }
+        h1, h2, h3 { color: #2F4F4F; }
+        code { background-color: #f4f4f4; padding: 2px 6px; border-radius: 4px; }
+        pre { background-color: #f4f4f4; padding: 10px; border-radius: 4px; overflow-x: auto; }
+        .screenshot { border: 1px solid #ccc; margin: 10px 0; padding: 5px; text-align: center; }
+    </style>
+</head>
+<body>
+
+<h1>Deploying a Sample Application on AWS EKS – Step-by-Step Guide</h1>
+<p><strong>Author:</strong> Vikramsinh Shinde</p>
+<p><strong>Date:</strong> December 1, 2025</p>
+
+<hr>
+
+<h2>Introduction</h2>
+<p>In this tutorial, we will deploy a <strong>sample NGINX application</strong> on <strong>AWS EKS</strong>. The application will be containerized using Docker, pushed to <strong>AWS ECR</strong>, deployed in Kubernetes, and exposed externally through <strong>AWS Application Load Balancer (ALB)</strong> using the <strong>AWS Load Balancer Controller</strong>.</p>
+
+<h3>Tools & Technologies Used:</h3>
+<ul>
+    <li>AWS EKS (Elastic Kubernetes Service)</li>
+    <li>AWS ECR (Elastic Container Registry)</li>
+    <li>Kubernetes</li>
+    <li>kubectl</li>
+    <li>Helm</li>
+    <li>Docker</li>
+    <li>eksctl</li>
+    <li>NGINX</li>
+    <li>Terraform (for EKS cluster creation)</li>
+</ul>
+
+<hr>
+
+<h2>Step 1: Setting Up the EKS Cluster</h2>
+<p>We created the EKS cluster using Terraform:</p>
+<pre><code>terraform apply</code></pre>
+<p><strong>Cluster Details:</strong></p>
+<ul>
+    <li>Cluster Name: vikram-eks</li>
+    <li>Cluster Endpoint: <code>https://42C02119786CCBA6FFE4712A9AF9D004.gr7.ap-south-1.eks.amazonaws.com</code></li>
+    <li>Node Group: vikram-eks:node-group-1</li>
+</ul>
+
+<p>Configure kubectl to access the cluster:</p>
+<pre><code>aws eks update-kubeconfig --name vikram-eks --region ap-south-1
+kubectl get nodes</code></pre>
+
+<div class="screenshot">Screenshot: EKS nodes in Ready state</div>
+
+<hr>
+
+<h2>Step 2: Building and Pushing Docker Image to ECR</h2>
+<p>Project structure for the portfolio app:</p>
+<pre><code>portfolio/
+├── Dockerfile
+├── index.html
+└── assets/</code></pre>
+
+<p><strong>Dockerfile:</strong></p>
+<pre><code>FROM nginx:alpine
+COPY ./ /usr/share/nginx/html</code></pre>
+
+<p>Build and push the image to ECR:</p>
+<pre><code>aws ecr create-repository --repository-name portfolio --region ap-south-1
+
+aws ecr get-login-password --region ap-south-1 | \
+docker login --username AWS --password-stdin &lt;ACCOUNT_ID&gt;.dkr.ecr.ap-south-1.amazonaws.com
+
+docker build -t portfolio .
+docker tag portfolio:latest &lt;ACCOUNT_ID&gt;.dkr.ecr.ap-south-1.amazonaws.com/portfolio:latest
+docker push &lt;ACCOUNT_ID&gt;.dkr.ecr.ap-south-1.amazonaws.com/portfolio:latest</code></pre>
+
+<div class="screenshot">Screenshot: Docker image pushed to ECR</div>
+
+<hr>
+
+<h2>Step 3: Deploying the Application in Kubernetes</h2>
+
+<h3>3.1 Deployment</h3>
+<p><strong>portfolio-deployment.yml:</strong></p>
+<pre><code>apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: portfolio
+  labels:
+    app: portfolio
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: portfolio
+  template:
+    metadata:
+      labels:
+        app: portfolio
+    spec:
+      containers:
+        - name: portfolio
+          image: &lt;ACCOUNT_ID&gt;.dkr.ecr.ap-south-1.amazonaws.com/portfolio:latest
+          ports:
+            - containerPort: 80
+          resources:
+            limits:
+              cpu: "250m"
+              memory: "256Mi"
+            requests:
+              cpu: "100m"
+              memory: "128Mi"</code></pre>
+
+<pre><code>kubectl apply -f portfolio-deployment.yml
+kubectl get pods --show-labels</code></pre>
+<div class="screenshot">Screenshot: Pods running in Kubernetes</div>
+
+<h3>3.2 Service</h3>
+<p><strong>portfolio-service.yml:</strong></p>
+<pre><code>apiVersion: v1
+kind: Service
+metadata:
+  name: portfolio-service
+spec:
+  selector:
+    app: portfolio
+  ports:
+    - protocol: TCP
+      port: 80
+      targetPort: 80
+  type: LoadBalancer</code></pre>
+
+<pre><code>kubectl apply -f portfolio-service.yml
+kubectl get svc portfolio-service</code></pre>
+
+<div class="screenshot">Screenshot: LoadBalancer service with external IP/ALB URL</div>
+
+<hr>
+
+<h2>Step 4: Installing AWS Load Balancer Controller</h2>
+<pre><code>helm repo add eks https://aws.github.io/eks-charts
+helm repo update
+kubectl apply -k "github.com/aws/eks-charts/stable/aws-load-balancer-controller/crds?ref=master"</code></pre>
+
+<p>Create IAM policy for ALB controller:</p>
+<pre><code>aws iam create-policy \
+    --policy-name AWSLoadBalancerControllerIAMPolicy \
+    --policy-document file://iam_policy.json</code></pre>
+
+<p>Associate IAM OIDC provider and create service account:</p>
+<pre><code>eksctl utils associate-iam-oidc-provider --region ap-south-1 --cluster vikram-eks --approve
+eksctl create iamserviceaccount \
+  --cluster vikram-eks \
+  --namespace kube-system \
+  --name aws-load-balancer-controller \
+  --attach-policy-arn arn:aws:iam::&lt;ACCOUNT_ID&gt;:policy/AWSLoadBalancerControllerIAMPolicy \
+  --approve</code></pre>
+
+<p>Install ALB controller:</p>
+<pre><code>helm upgrade --install aws-load-balancer-controller eks/aws-load-balancer-controller \
+  -n kube-system \
+  --set clusterName=vikram-eks \
+  --set region=ap-south-1 \
+  --set vpcId=&lt;VPC_ID&gt; \
+  --set serviceAccount.create=false \
+  --set serviceAccount.name=aws-load-balancer-controller
+
+kubectl get pods -n kube-system | grep aws-load-balancer-controller</code></pre>
+
+<div class="screenshot">Screenshot: ALB Controller pods running</div>
+
+<hr>
+
+<h2>Step 5: Exposing Application via Ingress</h2>
+
+<p><strong>portfolio-ingress.yml:</strong></p>
+<pre><code>apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: portfolio-ingress
+  annotations:
+    kubernetes.io/ingress.class: alb
+    alb.ingress.kubernetes.io/scheme: internet-facing
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP":80}]'
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /
+            pathType: Prefix
+            backend:
+              service:
+                name: portfolio-service
+                port:
+                  number: 80</code></pre>
+
+<pre><code>kubectl apply -f portfolio-ingress.yml
+kubectl get ingress portfolio-ingress</code></pre>
+
+<p>Access the application using the ALB URL:</p>
+<pre><code>curl -I http://&lt;ALB-URL&gt;
+HTTP/1.1 200 OK</code></pre>
+
+<div class="screenshot">Screenshot: Application accessible via browser/curl</div>
+
+<hr>
+
+<h2>Step 6: Verification</h2>
+
+<ul>
+    <li>Pods are running: <code>kubectl get pods --show-labels</code></li>
+    <li>Service endpoints: <code>kubectl get endpoints portfolio-service</code></li>
+    <li>Ingress ALB URL: <code>kubectl get ingress portfolio-ingress</code></li>
+</ul>
+
+<div class="screenshot">Screenshot: All resources healthy</div>
+
+<hr>
+
+<h2>Conclusion</h2>
+<p>All tasks in Section 1 have been successfully completed:</p>
+<ul>
+    <li>EKS Cluster setup</li>
+    <li>Docker image build and push to ECR</li>
+    <li>Deployment and Service creation</li>
+    <li>AWS Load Balancer Controller installation</li>
+    <li>Ingress setup with ALB URL</li>
+    <li>Application verified via curl/browser</li>
+</ul>
+
+<p>This tutorial serves as a complete step-by-step guide to deploying a containerized application on AWS EKS and exposing it externally through ALB.</p>
+
+</body>
+</html>
