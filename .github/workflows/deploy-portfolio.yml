@@ -4,13 +4,13 @@ on:
   push:
     branches:
       - main
+
 env:
   AWS_REGION: ap-south-1
   ECR_REPOSITORY: portfolio
   CLUSTER_NAME: vikram-eks
   KUBE_NAMESPACE: test-app
   AWS_ACCOUNT_ID: ${{ secrets.AWS_ACCOUNT_ID }}
-
 
 jobs:
   build-and-deploy:
@@ -30,7 +30,7 @@ jobs:
       - name: Login to ECR
         run: |
           aws ecr get-login-password --region ${{ env.AWS_REGION }} | \
-          docker login --username AWS --password-stdin <ACCOUNT_ID>.dkr.ecr.${{ env.AWS_REGION }}.amazonaws.com
+          docker login --username AWS --password-stdin ${{ env.AWS_ACCOUNT_ID }}.dkr.ecr.${{ env.AWS_REGION }}.amazonaws.com
 
       - name: Build Docker image
         run: |
@@ -38,20 +38,13 @@ jobs:
 
       - name: Tag Docker image
         run: |
-          docker tag ${{ env.ECR_REPOSITORY }}:latest <ACCOUNT_ID>.dkr.ecr.${{ env.AWS_REGION }}.amazonaws.com/${{ env.ECR_REPOSITORY }}:latest
+          docker tag ${{ env.ECR_REPOSITORY }}:latest ${{ env.AWS_ACCOUNT_ID }}.dkr.ecr.${{ env.AWS_REGION }}.amazonaws.com/${{ env.ECR_REPOSITORY }}:latest
 
       - name: Push Docker image to ECR
         run: |
-          docker push <ACCOUNT_ID>.dkr.ecr.${{ env.AWS_REGION }}.amazonaws.com/${{ env.ECR_REPOSITORY }}:latest
+          docker push ${{ env.AWS_ACCOUNT_ID }}.dkr.ecr.${{ env.AWS_REGION }}.amazonaws.com/${{ env.ECR_REPOSITORY }}:latest
 
       - name: Update Kubernetes Deployment
         run: |
-          docker login --username AWS --password-stdin ${{ env.AWS_ACCOUNT_ID }}.dkr.ecr.${{ env.AWS_REGION }}.amazonaws.com \
-          docker tag portfolio:latest ${{ env.AWS_ACCOUNT_ID }}.dkr.ecr.${{ env.AWS_REGION }}.amazonaws.com/portfolio:latest \
-          docker push ${{ env.AWS_ACCOUNT_ID }}.dkr.ecr.${{ env.AWS_REGION }}.amazonaws.com/portfolio:latest \
           kubectl set image deployment/portfolio portfolio=${{ env.AWS_ACCOUNT_ID }}.dkr.ecr.${{ env.AWS_REGION }}.amazonaws.com/portfolio:latest -n ${{ env.KUBE_NAMESPACE }}
-          
-      - name: Login to ECR
-        run: |
-          aws ecr get-login-password --region ${{ env.AWS_REGION }} | \
-          docker login --username AWS --password-stdin ${{ env.AWS_ACCOUNT_ID }}.dkr.ecr.${{ env.AWS_REGION }}.amazonaws.com
+
