@@ -59,3 +59,225 @@ h1{font-size:clamp(2.6rem,6.4vw,4.8rem);line-height:1.02;font-weight:700;letter-
 .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:18px}
 .card{padding:24px;transition:border-color .3s,transform .3s}
 .card:hover{transform:translateY(-4px);border-color:rgba(129,140,248,.55)}
+.card h3{font-size:1.05rem;margin-bottom:12px}
+.chip{display:inline-block;margin:0 6px 8px 0;padding:5px 12px;border-radius:999px;font-size:.8rem;background:rgba(255,255,255,.07);border:1px solid var(--bd)}
+.tl{position:relative;padding-left:36px}
+.tl::before{content:"";position:absolute;left:9px;top:8px;bottom:8px;width:2px;background:linear-gradient(var(--a),var(--b),var(--ok));box-shadow:0 0 12px var(--a)}
+.job{position:relative;padding:26px;margin-bottom:22px}
+.job::before{content:"";position:absolute;left:-36px;top:30px;width:16px;height:16px;border-radius:50%;background:var(--bg);border:3px solid var(--ok);box-shadow:0 0 12px var(--ok)}
+.job.now::before{border-color:var(--a);box-shadow:0 0 14px var(--a)}
+.jh{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
+.job h3{font-size:1.2rem}
+.job h4{color:var(--b);font-weight:500;font-size:.95rem}
+.bdg{font-size:.72rem;padding:4px 10px;border-radius:8px;color:var(--ok);background:rgba(74,222,128,.12);height:fit-content}
+.bdg.l{color:var(--a);background:rgba(129,140,248,.16)}
+.dt{font-size:.78rem;color:var(--mut)}
+.job ul{margin:14px 0 0 18px;color:#aeb8cc;font-size:.92rem}
+.job li{margin-bottom:6px}
+.card p{color:#aeb8cc;font-size:.9rem;margin-bottom:14px}
+.tech{font-size:.72rem;color:var(--b)}
+.pill{display:inline-block;padding:3px 9px;border-radius:8px;font-size:.7rem;margin-bottom:10px;color:var(--a);background:rgba(129,140,248,.14)}
+.blog{margin-top:22px;display:flex;flex-wrap:wrap;gap:10px;align-items:center;color:var(--mut);font-size:.9rem}
+.blog a{padding:6px 14px;border-radius:999px;border:1px solid var(--bd);background:var(--glass);text-decoration:none;font-size:.82rem;transition:.2s}
+.blog a:hover{color:#fff;border-color:var(--b)}
+.cert{display:flex;justify-content:space-between;gap:10px;padding:10px 0;border-bottom:1px solid var(--bd);font-size:.92rem}
+.cert:last-child{border:0}
+.cert a{color:var(--b);text-decoration:none;font-size:.8rem}
+.contact a.card{display:block;text-decoration:none}
+.contact b{display:block;font-size:.78rem;color:var(--mut);font-weight:500}
+footer{padding:36px 0;text-align:center;color:var(--mut);font-size:.85rem}
+@media(max-width:820px){.hero{grid-template-columns:1fr}.mets{grid-template-columns:repeat(2,1fr)}#hero{padding-top:100px}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}.dot{border-color:var(--ok);color:var(--ok)}}
+/* fresh light theme */
+:root{--bg:#f6fbff;--ink:#0f172a;--mut:#5b6b82;--a:#4f46e5;--b:#0891b2;--ok:#10b981;--pk:#ec4899;--glass:rgba(255,255,255,.6);--bd:rgba(15,23,42,.1)}
+body{background:radial-gradient(60vmax 40vmax at 0% 0%,rgba(125,211,252,.6),transparent 60%),radial-gradient(50vmax 40vmax at 100% 5%,rgba(196,181,253,.6),transparent 60%),radial-gradient(55vmax 45vmax at 95% 100%,rgba(134,239,172,.55),transparent 60%),radial-gradient(45vmax 35vmax at 0% 95%,rgba(253,186,116,.5),transparent 60%),#f6fbff;background-attachment:fixed}
+body::before,body::after{opacity:.6;filter:blur(90px);animation:drift 20s ease-in-out infinite alternate}
+body::before{background:#a5f3fc;top:12vh;left:-10vmax}
+body::after{background:#fbcfe8;top:48vh;right:-12vmax;bottom:auto;animation-delay:-9s}
+@keyframes drift{to{transform:translate(8vmax,-6vmax) scale(1.2)}}
+@keyframes shine{to{background-position:-250% 0}}
+@keyframes slide{to{background-position:200% 0}}
+@keyframes mq{to{transform:translateX(-50%)}}
+.glass{background:linear-gradient(135deg,rgba(255,255,255,.8),rgba(255,255,255,.42));border:1px solid rgba(255,255,255,.95);-webkit-backdrop-filter:blur(22px) saturate(170%);backdrop-filter:blur(22px) saturate(170%);box-shadow:0 10px 40px rgba(30,64,175,.12),0 2px 6px rgba(15,23,42,.05),inset 0 1px 0 #fff}
+nav a:hover{color:var(--ink);background:rgba(15,23,42,.06)}
+h1{font-size:clamp(3rem,9vw,6.2rem);line-height:.98;background:linear-gradient(100deg,#0f172a 0%,#4338ca 35%,#0ea5e9 65%,#10b981 100%,#0f172a 130%);background-size:250% 100%;-webkit-background-clip:text;background-clip:text;color:transparent;animation:shine 9s linear infinite}
+.role{display:inline-block;padding:8px 18px;border-radius:999px;font-weight:600;color:#3730a3;background:linear-gradient(90deg,rgba(99,102,241,.16),rgba(6,182,212,.18));border:1px solid rgba(99,102,241,.3)}
+.where{margin:14px 0 18px;color:var(--mut)}
+.sub{color:#334155}
+.btn{color:var(--ink);background:rgba(255,255,255,.7);border:1px solid rgba(15,23,42,.1)}
+.btn.p{color:#fff;border:0;background:linear-gradient(120deg,#4f46e5,#0ea5e9,#10b981,#4f46e5);background-size:200% 100%;animation:slide 7s linear infinite;box-shadow:0 8px 26px rgba(14,165,233,.35)}
+.btn:hover{box-shadow:0 10px 28px rgba(79,70,229,.25)}
+.run{box-shadow:0 24px 70px rgba(79,70,229,.2),0 0 0 1px rgba(255,255,255,.9) inset}
+.live{color:#059669}
+.dot{width:32px;height:32px}
+.stg:not(:last-child)::after{left:15px;top:42px;background:linear-gradient(var(--ok),rgba(16,185,129,.1))}
+.log{background:#0f172a;color:#cbd5e1}
+.log b{color:#4ade80}
+.mets div{background:rgba(255,255,255,.75)}
+.mets b{background:linear-gradient(90deg,#4f46e5,#0891b2);-webkit-background-clip:text;background-clip:text;color:transparent;font-size:1.7rem}
+.h h2{font-size:clamp(2.2rem,5vw,3.4rem);background:linear-gradient(90deg,#0f172a,#4338ca 70%,#0891b2);-webkit-background-clip:text;background-clip:text;color:transparent}
+.k{display:inline-block;padding:4px 12px;margin-bottom:12px;border-radius:999px;color:#0e7490;background:rgba(14,165,233,.12);border:1px solid rgba(14,165,233,.35)}
+.card{position:relative;overflow:hidden;--c:#4f46e5}
+.card:nth-child(4n+2){--c:#db2777}.card:nth-child(4n+3){--c:#0891b2}.card:nth-child(4n){--c:#059669}
+.card:hover{border-color:var(--c);box-shadow:0 16px 40px rgba(15,23,42,.12),0 0 0 1px var(--c)}
+.card::after{content:"";position:absolute;inset:0;border-radius:inherit;pointer-events:none;opacity:0;transition:opacity .3s;background:radial-gradient(300px circle at var(--mx,50%) var(--my,50%),color-mix(in srgb,var(--c) 16%,transparent),transparent 65%)}
+.card:hover::after{opacity:1}
+.card h3::before{content:"";display:inline-block;width:10px;height:10px;margin-right:10px;border-radius:3px;background:var(--c);box-shadow:0 0 12px color-mix(in srgb,var(--c) 60%,transparent)}
+.card p,.job ul{color:#475569}
+.chip{background:rgba(255,255,255,.75);border-color:rgba(15,23,42,.1)}
+.chip:nth-of-type(3n+1){color:#4338ca;border-color:rgba(99,102,241,.35)}
+.chip:nth-of-type(3n+2){color:#0e7490;border-color:rgba(8,145,178,.35)}
+.chip:nth-of-type(3n){color:#be185d;border-color:rgba(219,39,119,.3)}
+.tech{color:var(--c)}
+.pill{color:#4338ca;background:rgba(99,102,241,.12)}
+.tl::before{width:3px;background:linear-gradient(#6366f1,#ec4899,#06b6d4,#10b981);box-shadow:0 0 14px rgba(99,102,241,.4)}
+.job h4{color:#0e7490}
+.job.now{border:1px solid transparent;background:linear-gradient(#fff,#fff) padding-box,linear-gradient(120deg,#6366f1,#ec4899,#06b6d4,#10b981) border-box;box-shadow:0 18px 50px rgba(99,102,241,.22)}
+.job.now::before{border-color:var(--pk);box-shadow:0 0 14px var(--pk)}
+.bdg{color:#047857;background:rgba(16,185,129,.14)}
+.bdg.l{color:#fff;background:linear-gradient(90deg,#4f46e5,#0ea5e9)}
+.cert{border-bottom-color:rgba(15,23,42,.1)}
+.cert a{color:#0e7490}
+.blog a{background:rgba(255,255,255,.75)}
+.blog a:hover{color:var(--ink);border-color:var(--b)}
+.mq{overflow:hidden;padding:18px 0;background:rgba(255,255,255,.5);border-block:1px solid rgba(255,255,255,.9);-webkit-mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent);mask:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent)}
+.mt{display:flex;gap:14px;width:max-content;animation:mq 34s linear infinite}
+.mt span{padding:8px 20px;border-radius:999px;font:500 .9rem 'JetBrains Mono',monospace;background:#fff;border:1px solid rgba(15,23,42,.08);box-shadow:0 4px 14px rgba(15,23,42,.06)}
+.mt span:nth-child(3n+1){color:#4338ca}.mt span:nth-child(3n+2){color:#0e7490}.mt span:nth-child(3n){color:#be185d}
+@media(min-width:821px){#skills .grid{grid-template-columns:repeat(6,1fr)}#skills .card{grid-column:span 2}#skills .card:nth-child(1){grid-column:span 4}#skills .card:nth-child(6),#skills .card:nth-child(7){grid-column:span 3}#skills .card:nth-child(8){grid-column:span 6}}
+</style>
+</head>
+<body>
+<nav class="glass" aria-label="Main">
+<a href="#hero">Home</a><a href="#skills">Skills</a><a href="#experience">Experience</a><a href="#projects">Projects</a><a href="#education">Education</a><a href="#contact">Contact</a>
+</nav>
+
+<section id="hero"><div class="wrap hero">
+<div>
+<h1>Vikramsinh Shinde</h1>
+<p class="role">DevOps Engineer + Software Engineer</p>
+<p class="where">iKaushal Department, IDBI Bank, Mumbai</p>
+<p class="sub">3.9+ years across cloud infrastructure, full-stack development (Python/Flask + React.js) and ML model deployment. I build and support internal banking platforms in a secure on-premise environment, after years of AWS architecture, Kubernetes and CI/CD automation.</p>
+<div class="btns">
+<a class="btn p" href="https://drive.google.com/file/d/1V7aWodyLJcdEi_Gw2J6iDemZ0BvisIks/view?usp=drive_link">Download CV</a>
+<a class="btn" href="#contact">Get in touch</a>
+<a class="btn" href="https://github.com/vikramsinhshinde">GitHub</a>
+</div>
+</div>
+<div class="glass run" aria-label="Pipeline run summary">
+<div class="rh mono"><span>pipeline: career / main</span><span class="live"><i></i>running</span></div>
+<div class="stages">
+<div class="stg" style="--i:0"><span class="dot">✔</span><span class="st">Code<small>Python, Flask, React.js, Node.js</small></span></div>
+<div class="stg" style="--i:1"><span class="dot">✔</span><span class="st">Build<small>Docker, Jenkins, GitHub Actions</small></span></div>
+<div class="stg" style="--i:2"><span class="dot">✔</span><span class="st">Test<small>Validation, health checks</small></span></div>
+<div class="stg" style="--i:3"><span class="dot">✔</span><span class="st">Deploy<small>Kubernetes, AWS EKS, RHEL 9</small></span></div>
+<div class="stg" style="--i:4"><span class="dot">✔</span><span class="st">Monitor<small>Prometheus, Grafana</small></span></div>
+</div>
+<div class="log">$ git push origin main<br><b>build</b>&nbsp; image built<br><b>test</b>&nbsp;&nbsp; all checks passed<br><b>deploy</b> rollout complete</div>
+<div class="mets">
+<div><b>40%</b><span>AWS cost reduced</span></div>
+<div><b>15+</b><span>apps moved to EKS</span></div>
+<div><b>2,000+</b><span>concurrent students</span></div>
+<div><b>90%</b><span>deploy success rate</span></div>
+</div>
+</div>
+</div></section>
+
+<div class="mq" aria-hidden="true"><div class="mt"><span>Kubernetes</span><span>AWS</span><span>Docker</span><span>Terraform</span><span>Jenkins</span><span>GitHub Actions</span><span>Python</span><span>Flask</span><span>React.js</span><span>Node.js</span><span>Oracle</span><span>Ansible</span><span>Helm</span><span>Prometheus</span><span>Grafana</span><span>RHEL 9</span></div></div>
+
+<section id="skills"><div class="wrap">
+<div class="h"><span class="k">stage: build</span><h2>Skills</h2></div>
+<div class="grid">
+<div class="glass card"><h3>DevOps &amp; Infrastructure</h3><span class="chip">Linux/RHEL 9</span><span class="chip">Docker</span><span class="chip">Kubernetes</span><span class="chip">Docker Swarm</span><span class="chip">Git</span><span class="chip">Apache</span><span class="chip">On-premise deployment</span><span class="chip">Rollback</span></div>
+<div class="glass card"><h3>Backend</h3><span class="chip">Python</span><span class="chip">Flask</span><span class="chip">REST APIs</span><span class="chip">Node.js</span><span class="chip">Java</span><span class="chip">JSON</span></div>
+<div class="glass card"><h3>Frontend</h3><span class="chip">React.js</span><span class="chip">JavaScript</span><span class="chip">HTML/CSS</span><span class="chip">Interactive dashboards</span><span class="chip">Data visualization</span></div>
+<div class="glass card"><h3>Databases</h3><span class="chip">Oracle</span><span class="chip">SQL</span><span class="chip">MySQL</span><span class="chip">SQLite</span><span class="chip">PostgreSQL</span><span class="chip">MongoDB</span><span class="chip">Redis</span></div>
+<div class="glass card"><h3>ML / MLOps</h3><span class="chip">ML inference</span><span class="chip">Logistic Regression</span><span class="chip">Decision Tree</span><span class="chip">Model serving</span><span class="chip">Containerized ML deployment</span></div>
+<div class="glass card"><h3>Cloud (AWS)</h3><span class="chip">EC2</span><span class="chip">S3</span><span class="chip">EKS</span><span class="chip">Lambda</span><span class="chip">RDS</span><span class="chip">Route53</span><span class="chip">VPC</span><span class="chip">IAM</span><span class="chip">CloudFront</span><span class="chip">ALB/NLB</span><span class="chip">Terraform</span><span class="chip">Ansible</span></div>
+<div class="glass card"><h3>Automation &amp; CI/CD</h3><span class="chip">Jenkins</span><span class="chip">GitHub Actions</span><span class="chip">Helm</span><span class="chip">Nexus</span><span class="chip">Slack deployment automation</span></div>
+<div class="glass card"><h3>Monitoring &amp; Logging</h3><span class="chip">Prometheus</span><span class="chip">Grafana</span><span class="chip">CloudWatch</span><span class="chip">ELK Stack</span></div>
+</div></div></section>
+
+<section id="experience"><div class="wrap">
+<div class="h"><span class="k">stage: deploy</span><h2>Experience</h2></div>
+<div class="tl">
+<article class="glass job now">
+<div class="jh"><div><h3>DevOps Engineer + Software Engineer</h3><h4>IDBI Bank, iKaushal Department (via Adeptken), Mumbai</h4></div><span class="bdg l">live</span></div>
+<p class="dt">Dec 2025 to present</p>
+<ul>
+<li>Develop and support internal banking applications in a secure, on-premise intranet environment (RHEL 9).</li>
+<li>Build Python/Flask REST APIs and React.js dashboards, including a hierarchy-wise NPA analytics dashboard across HQ, Zone, Region and Branch.</li>
+<li>Modernize a SAS Enterprise Miner NPA model (Logistic Regression, Decision Tree) into a Python inference pipeline served via Flask.</li>
+<li>Work on Oracle integration, SQLite to Oracle migration and role-based application design (Super Admin, Admin, User).</li>
+<li>Support offline deployments, adaptable across Docker/Kubernetes and traditional methods, and compile technical documentation.</li>
+</ul></article>
+<article class="glass job">
+<div class="jh"><div><h3>AWS Cloud Solution Architect, DevOps &amp; SRE</h3><h4>PJSoftTech Pvt. Ltd., Pune</h4></div><span class="bdg">passed</span></div>
+<p class="dt">Jun 2024 to Dec 2025</p>
+<ul>
+<li>Led a team of 15 engineers and improved delivery speed by 30%.</li>
+<li>Cut AWS costs by 40% (US$1,000+/month) with Reserved Instances and Spot Fleet automation.</li>
+<li>Built Jenkins + Docker CI/CD pipelines with a 90% deployment success rate, plus a Slack-driven deploy workflow with health checks and rollback.</li>
+<li>Migrated 15+ applications to AWS EKS with Helm (50% faster) and ran a near-zero-downtime AWS account migration.</li>
+<li>Implemented Prometheus and Grafana, reducing MTTR by 40%, and built an auto-scaling exam system for 2,000+ concurrent students.</li>
+</ul></article>
+<article class="glass job">
+<div class="jh"><div><h3>Technical Consultant | Team Lead</h3><h4>Okinawa Goju-Ryu Karate Do India</h4></div><span class="bdg">passed</span></div>
+<p class="dt">Jan 2023 to Feb 2024</p>
+<ul>
+<li>Led deployment of the official karate mobile app serving 2,000+ students nationwide.</li>
+<li>Containerized with Docker and Kubernetes for high availability; Jenkins CI/CD cut deployment time by 70%.</li>
+<li>Managed MySQL migration and set up Prometheus and Grafana monitoring.</li>
+</ul></article>
+</div></div></section>
+
+<section id="projects"><div class="wrap">
+<div class="h"><span class="k">stage: artifacts</span><h2>Projects</h2></div>
+<div class="grid">
+<div class="glass card"><span class="pill">internal, IDBI Bank</span><h3>NPA ML Inference &amp; Deployment Platform</h3><p>SAS NPA model modernized into a Python/Flask inference service, feeding a React.js dashboard deployed on-premise.</p><span class="tech">Python, Flask, React.js, Oracle, SQLite, Docker</span></div>
+<div class="glass card"><span class="pill">internal, IDBI Bank</span><h3>Internal Deployment Projects</h3><p>Deployment and end-to-end server management for PRM, Power of One, Samvad Sabha, Karya Pathav and the CEO Dashboard.</p><span class="tech">Node.js, React.js, Oracle, SQLite, Docker</span></div>
+<div class="glass card"><span class="pill">PJSoftTech</span><h3>Slack-Driven Deployment Platform</h3><p>Artifact validation, deployment, health checks and rollback with live Slack status updates.</p><span class="tech">Linux, JAR/React builds, Slack API</span></div>
+<div class="glass card"><h3>Facial Recognition System</h3><p>Face recognition pipeline with 99.9% accuracy.</p><span class="tech">Python, Java, AWS S3, MySQL, Redis</span></div>
+<div class="glass card"><h3>Vartman Nirnay</h3><p>Full-stack web application designed for around 10,000 concurrent users.</p><span class="tech">Full-stack web architecture</span></div>
+<div class="glass card"><h3>CI/CD with GitHub Actions</h3><p>Automated frontend, backend and APK deployment, cutting manual deployment time by 90%.</p><span class="tech">GitHub Actions</span></div>
+</div>
+<div class="blog"><span>From the blog:</span>
+<a href="https://vikramsinhshindes.blogspot.com/2025/12/deploying-sample-application-on-aws-eks.html">Deploying on AWS EKS</a>
+<a href="https://vikramsinhshindes.blogspot.com/2025/07/deployment-automation-with-github-action.html">GitHub Actions deployment</a>
+<a href="https://vikramsinhshindes.blogspot.com/2025/01/devops-project-by-using-docker-swarm.html">Docker Swarm</a>
+<a href="https://vikramsinhshindes.blogspot.com/2024/12/corporate-cicd-pipeline.html">Corporate CI/CD pipeline</a>
+</div></div></section>
+
+<section id="education"><div class="wrap">
+<div class="h"><span class="k">stage: verify</span><h2>Education &amp; certifications</h2></div>
+<div class="grid">
+<div class="glass card"><h3>Certifications</h3>
+<div class="cert"><span>DevOps Engineering Certification<br><span class="dt">Seven Mentors, Feb 2025</span></span><a href="https://drive.google.com/file/d/112Qua-GLhWhH2zpNKoYvjniDaeOLN9It/view?usp=drive_link">View</a></div>
+<div class="cert"><span>AWS Certified Solutions Architect, Associate<br><span class="dt">Seven Mentors, May 2024</span></span><a href="https://drive.google.com/file/d/1nlfMGrb94hB79XZHtOt1SvUTkMI2GRt4/view?usp=drive_link">View</a></div>
+<div class="cert"><span>Red Hat Certified System Administrator (RHCSA)<br><span class="dt">Seven Mentors, Jan 2024</span></span></div>
+<div class="cert"><span>Cisco Certified Network Associate (CCNA)<br><span class="dt">Seven Mentors, Nov 2023</span></span></div></div>
+<div class="glass card"><h3>Education</h3>
+<div class="cert"><span>DevOps Engineering Certification<br><span class="dt">Seven Mentors, Pune, 2023 to 2025</span></span></div>
+<div class="cert"><span>B.Sc. in Biotechnology and Botany<br><span class="dt">Fergusson College, Pune University, 2011 to 2018</span></span></div>
+<h3 style="margin-top:18px">Learning now</h3><p style="margin:0">Agentic AI for DevOps Automation (self-study, in progress)</p></div>
+<div class="glass card"><h3>Beyond code</h3><p>Languages: English (professional), Hindi and Marathi (native), Japanese (learning).</p><p style="margin:0">Karate Sensei mentoring students, including children, with online classes. Earlier community leadership reached 2,000+ students across 150+ programs.</p></div>
+</div></div></section>
+
+<section id="contact" class="contact"><div class="wrap">
+<div class="h"><span class="k">stage: release</span><h2>Let’s talk</h2></div>
+<div class="grid">
+<a class="glass card" href="mailto:vikramsinhshindesinh@gmail.com"><b>Email</b>vikramsinhshindesinh@gmail.com</a>
+<a class="glass card" href="tel:+917769974349"><b>Phone</b>+91 7769974349</a>
+<a class="glass card" href="https://www.linkedin.com/in/vikramsinh-shinde-b9285aa4/"><b>LinkedIn</b>vikramsinh-shinde</a>
+<a class="glass card" href="https://github.com/vikramsinhshinde"><b>GitHub</b>vikramsinhshinde</a>
+<a class="glass card" href="https://hub.docker.com/u/vikramsinhshinde"><b>Docker Hub</b>vikramsinhshinde</a>
+<a class="glass card" href="https://vikramsinhshindes.blogspot.com/"><b>Blog</b>vikramsinhshindes.blogspot.com</a>
+</div></div></section>
+
+<footer>© 2026 Vikramsinh Shinde. Mumbai, India.</footer>
+<script>
+document.querySelectorAll('.card').forEach(c=>c.addEventListener('pointermove',e=>{const r=c.getBoundingClientRect();c.style.setProperty('--mx',e.clientX-r.left+'px');c.style.setProperty('--my',e.clientY-r.top+'px')}));
+const t=document.querySelector('.mt');if(t)t.innerHTML+=t.innerHTML;
+</script>
+</body>
+</html>
